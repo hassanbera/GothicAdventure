@@ -47,19 +47,29 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        
-        if(Input.GetKeyDown(KeyCode.Y))
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            // just attack one time when it's pressed
-            animator.SetTrigger("isAttacking");
-            
-            // after the attack is done, set the trigger to false
-            animator.ResetTrigger("isAttacking");
+            animator.SetBool("attack", true);
         }
 
-        
+        if(Input.GetButtonUp("Fire1"))
+        {
+            animator.SetBool("attack", false);
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            animator.SetBool("attack2", true);
+        }
+
+        if (Input.GetButtonUp("Fire2"))
+        {
+            animator.SetBool("attack2", false);
+        }
 
         animator.SetFloat("speed", Mathf.Abs(horizontal));
         animator.SetBool("isGrounded", !isGrounded);
     }
+
 }
