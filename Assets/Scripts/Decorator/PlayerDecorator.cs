@@ -12,6 +12,17 @@ public abstract class PlayerDecorator : IPlayer
         get => decoratedPlayer.Health;
         set => decoratedPlayer.Health = value;
     }
+    public virtual int Attack
+    {
+        get => decoratedPlayer.Attack;
+        set => decoratedPlayer.Attack = value;
+    }
+    public virtual int Speed
+    {
+        get => decoratedPlayer.Speed;
+        set => decoratedPlayer.Speed = value;
+    }
+
 
     public virtual void ApplyBoost()
     {

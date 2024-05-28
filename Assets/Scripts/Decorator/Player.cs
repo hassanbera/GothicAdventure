@@ -2,7 +2,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IPlayer
 {
     private PlayerHealth playerHealth;
-
+    private int attackDamage = 40;
     void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
