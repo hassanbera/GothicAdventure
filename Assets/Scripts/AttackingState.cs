@@ -1,3 +1,4 @@
+using UnityEngine;
 public class AttackingState : IPlayerState
 {
     public void EnterState(PlayerController player)
@@ -14,7 +15,7 @@ public class AttackingState : IPlayerState
         }
         else if (Input.GetAxis("Horizontal") != 0)
         {
-            player.TransitionToState(new RunState());
+            player.TransitionToState(new RunningState());
         }
     }
 

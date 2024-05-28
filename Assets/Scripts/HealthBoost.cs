@@ -1,23 +1,15 @@
-// HealthBoost.cs
 public class HealthBoost : PlayerDecorator
 {
-    public HealthBoost(IPlayer player) : base(player) { }
+    private int bonusHealth;
 
-    public override void ApplyBoost()
+    public HealthBoost(IPlayer player, int healthBonus) : base(player)
     {
-        base.ApplyBoost();
-        Health += 50; // Increase health by 50
+        bonusHealth = healthBonus;
     }
-}
-
-// ShieldBoost.cs
-public class ShieldBoost : PlayerDecorator
-{
-    public ShieldBoost(IPlayer player) : base(player) { }
 
     public override void ApplyBoost()
     {
         base.ApplyBoost();
-        // Implement shield logic
+        Health += bonusHealth; // Increase health by the bonus amount
     }
 }

@@ -1,6 +1,18 @@
+using UnityEngine;
 public class Player : MonoBehaviour, IPlayer
 {
-    public int Health { get; set; } = 100;
+    private PlayerHealth playerHealth;
+
+    void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
+    public int Health
+    {
+        get { return playerHealth.Health; }
+        set { playerHealth.Health = value; }
+    }
 
     public void ApplyBoost()
     {

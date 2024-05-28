@@ -1,4 +1,4 @@
-// IdleState.cs
+using UnityEngine;
 public class IdleState : IPlayerState
 {
     public void EnterState(PlayerController player)
@@ -15,7 +15,7 @@ public class IdleState : IPlayerState
         }
         else if (Input.GetAxis("Horizontal") != 0)
         {
-            player.TransitionToState(new RunState());
+            player.TransitionToState(new RunningState());
         }
     }
 
