@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(playerLegs.position, groundCheckRadius, groundLayer);
 
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         
 
@@ -42,8 +41,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        // when i jump the player keeps flying
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if(isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
