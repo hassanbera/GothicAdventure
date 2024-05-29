@@ -16,21 +16,9 @@ public class PlayerController : MonoBehaviour, IPlayer
     public SpriteRenderer spriteRenderer;
     public IPlayerState currentState;
 
-    public virtual int JumpForce
-    {
-        get => JumpForce;
-        set => JumpForce = value;
-    }
-    public virtual float Speed
-    {
-        get => Speed;
-        set => Speed = value;
-    }
-    public virtual float Attack
-    {
-        get => Attack;
-        set => Attack = value;
-    }
+    public float Attack { get; set; } = 10;
+    public int JumpForce { get; set; } = 10;
+    public float Speed { get; set; } = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,4 +87,6 @@ public class PlayerController : MonoBehaviour, IPlayer
     }
 
     public void ApplyBoost() { }
+
+    
 }

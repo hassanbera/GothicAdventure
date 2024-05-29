@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Fruit : MonoBehaviour
 {
@@ -13,9 +14,17 @@ public class Fruit : MonoBehaviour
             {
                 // Apply health boost decorator
                 player = new AttackBoost(player, attackBonus);
+                StartCoroutine(RemoveBoost(attackBonus));
+
+                player = new AttackBoost(player, -attackBonus);
                 player.ApplyBoost();
             }
             Destroy(gameObject); // Destroy the fruit after collision
         }
+    }
+
+    public IEnumerator RemoveBoost(int attackBonus)
+    {
+        yield return new WaitForSeconds(5);
     }
 }
