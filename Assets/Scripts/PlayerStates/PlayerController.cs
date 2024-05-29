@@ -14,60 +14,62 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-
+    public IPlayerState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        TransitionToState(new IdleState());
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        currentState.UpdateState(this);
         isGrounded = Physics2D.OverlapCircle(playerLegs.position, groundCheckRadius, groundLayer);
+    }
 
-        float horizontal = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        
-
-        if (horizontal > 0)
+    public void TransitionToState(IPlayerState newState)
+    {
+        if (currentState != null)
         {
-            spriteRenderer.flipX = false;
+            currentState.ExitState(this);
         }
-        else if (horizontal < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
+        currentState = newState;
+        newState.EnterState(this);
+    }
 
-        if(isGrounded && Input.GetButtonDown("Jump"))
+    public void SetAnimation(string animationName)
+    {
+        if(animationName == "Idle")
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            animator.SetBool("attack", true);
+            animator.SetFloat("speed", 0);
         }
 
-        if(Input.GetButtonUp("Fire1"))
+        else if(animationName == "IdleAfterJump")
         {
-            animator.SetBool("attack", false);
+            animator.SetFloat("speed", 0);
+            animator.SetBool("isGrounded", false);
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        else if(animationName == "Run")
         {
-            animator.SetBool("attack2", true);
+            animator.SetFloat("speed", 1);
         }
 
-        if (Input.GetButtonUp("Fire2"))
+        else if(animationName == "Jump")
         {
-            animator.SetBool("attack2", false);
+            animator.SetBool("isGrounded", !isGrounded);
         }
 
-        animator.SetFloat("speed", Mathf.Abs(horizontal));
-        animator.SetBool("isGrounded", !isGrounded);
+        else if(animationName == "notJumping")
+        {
+            animator.SetBool("isGrounded", !isGrounded);
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

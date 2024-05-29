@@ -1,13 +1,13 @@
 using UnityEngine;
 public class AttackingState : IPlayerState
 {
-    public void EnterState(PlayerStateController player)
+    public void EnterState(PlayerController player)
     {
         // Initialize idle animation
         player.SetAnimation("Idle");
     }
 
-    public void UpdateState(PlayerStateController player)
+    public void UpdateState(PlayerController player)
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -19,7 +19,7 @@ public class AttackingState : IPlayerState
         }
     }
 
-    public void ExitState(PlayerStateController player)
+    public void ExitState(PlayerController player)
     {
         // Cleanup if necessary
     }

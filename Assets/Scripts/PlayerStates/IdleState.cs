@@ -1,16 +1,17 @@
 using UnityEngine;
 public class IdleState : IPlayerState
 {
-    public void EnterState(PlayerStateController player)
+    public void EnterState(PlayerController player)
     {
         // Initialize idle animation
         player.SetAnimation("Idle");
     }
 
-    public void UpdateState(PlayerStateController player)
+    public void UpdateState(PlayerController player)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && player.isGrounded)
         {
+            player.isGrounded = false;
             player.TransitionToState(new JumpState());
         }
         else if (Input.GetAxis("Horizontal") != 0)
@@ -19,7 +20,7 @@ public class IdleState : IPlayerState
         }
     }
 
-    public void ExitState(PlayerStateController player)
+    public void ExitState(PlayerController player)
     {
         // Cleanup if necessary
     }

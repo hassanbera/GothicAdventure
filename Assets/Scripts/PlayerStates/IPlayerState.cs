@@ -1,6 +1,6 @@
 public interface IPlayerState
 {
-    void EnterState(PlayerStateController player);
-    void UpdateState(PlayerStateController player);
-    void ExitState(PlayerStateController player);
+    void EnterState(PlayerController player);
+    void UpdateState(PlayerController player);
+    void ExitState(PlayerController player);
 }

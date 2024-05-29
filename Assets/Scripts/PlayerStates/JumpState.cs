@@ -2,26 +2,27 @@ using UnityEngine;
 
 public class JumpState : IPlayerState
 {
-    public void EnterState(PlayerStateController player)
+  
+    public void EnterState(PlayerController player)
     {
-        // Initialize idle animation
-        player.SetAnimation("Idle");
+        // Initialize jump animation
+        player.SetAnimation("Jump");
+        player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+        Debug.Log("isGrounded: " + player.isGrounded);
+        
     }
 
-    public void UpdateState(PlayerStateController player)
+    public void UpdateState(PlayerController player)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (player.isGrounded)
         {
-            player.TransitionToState(new JumpState());
-        }
-        else if (Input.GetAxis("Horizontal") != 0)
-        {
-            player.TransitionToState(new RunningState());
-        }
+            Debug.Log("landed");
+            player.TransitionToState(new IdleState());
+            player.SetAnimation("IdleAfterJump");
+        }   
     }
 
-    public void ExitState(PlayerStateController player)
+    public void ExitState(PlayerController player)
     {
-        // Cleanup if necessary
     }
 }
