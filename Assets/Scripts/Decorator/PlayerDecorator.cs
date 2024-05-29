@@ -7,22 +7,21 @@ public abstract class PlayerDecorator : IPlayer
         decoratedPlayer = player;
     }
 
-    public virtual float Health
+    public virtual int JumpForce
     {
-        get => decoratedPlayer.Health;
-        set => decoratedPlayer.Health = value;
+        get => decoratedPlayer.JumpForce;
+        set => decoratedPlayer.JumpForce = value;
     }
-    public virtual int Attack
-    {
-        get => decoratedPlayer.Attack;
-        set => decoratedPlayer.Attack = value;
-    }
-    public virtual int Speed
+    public virtual float Speed
     {
         get => decoratedPlayer.Speed;
         set => decoratedPlayer.Speed = value;
     }
-
+    public virtual float Attack
+    {
+        get => decoratedPlayer.Attack;
+        set => decoratedPlayer.Attack = value;
+    }
 
     public virtual void ApplyBoost()
     {

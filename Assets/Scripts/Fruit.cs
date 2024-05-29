@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    public int healthBonus = 50; // Amount of health to add
+    public int attackBonus = 12; // Amount of health to add
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +12,7 @@ public class Fruit : MonoBehaviour
             if (player != null)
             {
                 // Apply health boost decorator
-                player = new HealthBoost(player, healthBonus);
+                player = new AttackBoost(player, attackBonus);
                 player.ApplyBoost();
             }
             Destroy(gameObject); // Destroy the fruit after collision

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPlayer
 {
     public float speed = 5.0f;
     public float jumpForce = 5.0f;
@@ -15,6 +15,22 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public IPlayerState currentState;
+
+    public virtual int JumpForce
+    {
+        get => JumpForce;
+        set => JumpForce = value;
+    }
+    public virtual float Speed
+    {
+        get => Speed;
+        set => Speed = value;
+    }
+    public virtual float Attack
+    {
+        get => Attack;
+        set => Attack = value;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +39,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-
     void Update()
     {
         currentState.UpdateState(this);
@@ -46,28 +60,28 @@ public class PlayerController : MonoBehaviour
 
     public void SetAnimation(string animationName)
     {
-        if(animationName == "Idle")
+        if (animationName == "Idle")
         {
             animator.SetFloat("speed", 0);
         }
 
-        else if(animationName == "IdleAfterJump")
+        else if (animationName == "IdleAfterJump")
         {
             animator.SetFloat("speed", 0);
             animator.SetBool("isGrounded", false);
         }
 
-        else if(animationName == "Run")
+        else if (animationName == "Run")
         {
             animator.SetFloat("speed", 1);
         }
 
-        else if(animationName == "Jump")
+        else if (animationName == "Jump")
         {
             animator.SetBool("isGrounded", true);
         }
 
-        else if(animationName == "notJumping")
+        else if (animationName == "notJumping")
         {
             animator.SetBool("isGrounded", !isGrounded);
         }
@@ -77,11 +91,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Apple")
+        if (collision.tag == "Apple")
         {
             Destroy(collision.gameObject);
             FindObjectOfType<PlayerHealth>().changeHealth(10);
         }
     }
 
+    public void ApplyBoost() { }
 }
