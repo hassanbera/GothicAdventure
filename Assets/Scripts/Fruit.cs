@@ -12,8 +12,10 @@ public class Fruit : MonoBehaviour
             IPlayer player = other.GetComponent<IPlayer>();
             if (player != null)
             {
+                IPlayer tempPlayer = player;
                 // Apply health boost decorator
-                player = new AttackBoost(player, attackBonus);
+                tempPlayer = new AttackBoost(player, attackBonus);
+                tempPlayer.ApplyBoost();
                 StartCoroutine(RemoveBoost(attackBonus));
 
                 player = new AttackBoost(player, -attackBonus);
