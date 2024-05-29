@@ -84,6 +84,12 @@ public class PlayerController : MonoBehaviour, IPlayer
             Destroy(collision.gameObject);
             FindObjectOfType<PlayerHealth>().changeHealth(10);
         }
+
+        if (collision.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            FindObjectOfType<PlayerExperience>().ChangeExperience(10);
+        }
     }
 
     public void ApplyBoost() { }

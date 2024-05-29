@@ -16,13 +16,13 @@ public class HealthBarManager : MonoBehaviour, IHealthObserver
         playerHealth.RegisterObserver(this);
 
         healthBar.fillAmount = playerHealth.Health / 100;
-        healthText.text = playerHealth.Health.ToString();
+        healthText.text = playerHealth.Health.ToString() + " HP";
     }
 
     public void updateHealthBar(float health)
     {
         healthBar.fillAmount = health / 100;
-        healthText.text = health.ToString();
+        healthText.text = health.ToString() + " HP";
         Debug.Log("Health: " + health);
     }
 

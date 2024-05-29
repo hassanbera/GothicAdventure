@@ -4,43 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class XPBarManager : MonoBehaviour,INotificationObserver
+public class XPBarManager : MonoBehaviour,IExperienceObserver
 {
-    public float xp = 0;
-    public float maxXp = 100;
     public Image xpBar;
-    public float currentLevel = 1;
     public TextMeshProUGUI xpText;
+    public PlayerExperience playerExperience;
     // Start is called before the first frame update
     void Start()
     {
+        playerExperience = GameObject.FindObjectOfType<PlayerExperience>();
+        playerExperience.RegisterObserver(this);
 
-        NotificationManager.Instance.AddObserver(this, NotificationType.XP);
-        xpText.text = "XP lvl" + currentLevel;
-
-        updateXPBar(0);
+        xpBar.fillAmount = playerExperience.Experience / 100;
+        xpText.text = "XP lvl" + playerExperience.CurrentLevel;
     }
 
     // Update is called once per frame
-    void Update()
+    
+
+    void updateXPBar(int value)
     {
-        
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            updateXPBar(10);
-        }
+        // convert the value from int to float
+        float xp = value;
+        xpBar.fillAmount = xp / 100;
+        xpText.text = "XP lvl" + playerExperience.CurrentLevel;
+        Debug.Log("XP: " + value);
+    
     }
 
-    void updateXPBar(float value)
+    public void OnExperienceChanged(int value)
     {
-        xp += value;
-        if(xp > maxXp)
-        {
-            xp = 0;
-            currentLevel++;
-        }
-        xpBar.fillAmount = xp / maxXp;
-        xpText.text = "XP lvl" + currentLevel;   
-    
+        updateXPBar(value);
     }
 }

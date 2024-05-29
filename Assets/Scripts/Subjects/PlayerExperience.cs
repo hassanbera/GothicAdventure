@@ -5,6 +5,7 @@ public class PlayerExperience : MonoBehaviour, IExperienceSubject
 {
     private List<IExperienceObserver> observers = new List<IExperienceObserver>();
     private int experience;
+    public int currentLevel = 1;
 
     public int Experience
     {
@@ -14,6 +15,30 @@ public class PlayerExperience : MonoBehaviour, IExperienceSubject
             experience = value;
             NotifyObservers();
         }
+    }
+
+    public int CurrentLevel
+    {
+        get { return currentLevel; }
+        set
+        {
+            currentLevel = value;
+            NotifyObservers();
+        }
+    }
+
+    public void ChangeExperience(int amount)
+    {
+        experience += amount;
+        if (experience > 100)
+        {
+            experience = 0;
+            currentLevel++;
+        }
+
+        Experience = experience;
+        CurrentLevel = currentLevel;
+
     }
 
     public void RegisterObserver(IExperienceObserver observer)
