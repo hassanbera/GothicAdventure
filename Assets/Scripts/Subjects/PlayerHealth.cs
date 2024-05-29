@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IHealthSubject
 {
     private List<IHealthObserver> observers = new List<IHealthObserver>();
-    private int health;
+    private float health = 100;
+    private float maxHealth = 100;
 
-    public int Health
+    public float Health
     {
         get { return health; }
         set
@@ -15,6 +16,21 @@ public class PlayerHealth : MonoBehaviour, IHealthSubject
             health = value;
             NotifyObservers();
         }
+    }
+
+    public void changeHealth(float amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else if (health < 0)
+        {
+            health = 0;
+        }
+
+        Health = health;
     }
 
     public void RegisterObserver(IHealthObserver observer)

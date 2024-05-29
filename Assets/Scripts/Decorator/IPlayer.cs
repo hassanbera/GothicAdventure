@@ -1,6 +1,8 @@
+using UnityEngine;
+using System.Collections;
 public interface IPlayer
 {
-    int Health { get; set; }
+    float Health { get; set; }
     int Attack { get; set; }
     int Speed { get; set; }
     void ApplyBoost();

@@ -1,8 +1,12 @@
-public class AttackBoost : PlayerDecorator
+using UnityEngine;
+using System.Collections;
+
+
+public class SpeedBoost : PlayerDecorator
 {
     private int bonusSpeed;
 
-    public HealthBoost(IPlayer player, int bonusSpeed) : base(player)
+    public SpeedBoost(IPlayer player, int bonusSpeed) : base(player)
     {
         this.bonusSpeed = bonusSpeed;
     }

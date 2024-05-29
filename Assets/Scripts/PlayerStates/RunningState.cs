@@ -1,12 +1,14 @@
+using UnityEngine;
+
 public class RunningState : IPlayerState
 {
-    public void EnterState(PlayerController player)
+    public void EnterState(PlayerStateController player)
     {
         // Initialize idle animation
         player.SetAnimation("Idle");
     }
 
-    public void UpdateState(PlayerController player)
+    public void UpdateState(PlayerStateController player)
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -14,11 +16,11 @@ public class RunningState : IPlayerState
         }
         else if (Input.GetAxis("Horizontal") != 0)
         {
-            player.TransitionToState(new RunState());
+            player.TransitionToState(new RunningState());
         }
     }
 
-    public void ExitState(PlayerController player)
+    public void ExitState(PlayerStateController player)
     {
         // Cleanup if necessary
     }

@@ -23,18 +23,6 @@ public class AttackBoost : PlayerDecorator
     {
         base.ApplyBoost();
         Attack += bonusAttack;
-        StartCoroutine(TemporaryBoost());
     }
 
-    public override void RemoveBoost()
-    {
-        Attack -= bonusAttack;
-    }
-
-    private IEnumerator TemporaryBoost()
-    {
-        yield return new WaitForSeconds(duration);
-        RemoveBoost();
-        Destroy(this); // Remove the decorator component after the boost duration
-    }
 }

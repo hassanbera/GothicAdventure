@@ -1,4 +1,4 @@
 public interface IHealthObserver
 {
-    void OnHealthChanged(int health);
+    void OnHealthChanged(float health);
 }

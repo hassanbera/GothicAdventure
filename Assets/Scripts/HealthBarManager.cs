@@ -4,45 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HealthBarManager : MonoBehaviour
+public class HealthBarManager : MonoBehaviour, IHealthObserver
 {
-    public float health = 100;
-    public float maxHealth = 100;
     public Image healthBar;
     public TextMeshProUGUI healthText;
     // Start is called before the first frame update
+    public PlayerHealth playerHealth;
     void Start()
     {
-        healthText.text = health + "%";
+        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
+        playerHealth.RegisterObserver(this);
+
+        healthBar.fillAmount = playerHealth.Health / 100;
+        healthText.text = playerHealth.Health.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void updateHealthBar(float health)
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            updateHealthBar(-10);
-        }
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            updateHealthBar(10);
-        }
+        healthBar.fillAmount = health / 100;
+        healthText.text = health.ToString();
+        Debug.Log("Health: " + health);
     }
 
-    // we can pass positive or negative value to this function
-    public void updateHealthBar(float value)
+    public void OnHealthChanged(float health)
     {
-        health += value;
-        if(health > maxHealth)
-        {
-            health = maxHealth;
-        }
-        if(health < 0)
-        {
-            health = 0;
-        }
-        healthBar.fillAmount = health / maxHealth;
-        healthText.text = health + "%";
-    
+        updateHealthBar(health);
     }
 }

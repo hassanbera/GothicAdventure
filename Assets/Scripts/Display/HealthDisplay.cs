@@ -5,7 +5,7 @@ public class HealthDisplay : MonoBehaviour, IHealthObserver
 {
     public Text healthText;
 
-    public void OnHealthChanged(int health)
+    public void OnHealthChanged(float health)
     {
         healthText.text = "Health: " + health;
     }

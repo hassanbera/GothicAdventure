@@ -7,7 +7,7 @@ public abstract class PlayerDecorator : IPlayer
         decoratedPlayer = player;
     }
 
-    public virtual int Health
+    public virtual float Health
     {
         get => decoratedPlayer.Health;
         set => decoratedPlayer.Health = value;

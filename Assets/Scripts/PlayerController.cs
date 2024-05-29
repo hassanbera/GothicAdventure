@@ -70,4 +70,13 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", !isGrounded);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Apple")
+        {
+            Destroy(collision.gameObject);
+            FindObjectOfType<PlayerHealth>().changeHealth(10);
+        }
+    }
+
 }

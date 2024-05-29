@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthLogger : MonoBehaviour, IHealthObserver
 {
-    public void OnHealthChanged(int health)
+    public void OnHealthChanged(float health)
     {
         Debug.Log("Player health changed to: " + health);
     }
@@ -21,4 +21,6 @@ public class HealthLogger : MonoBehaviour, IHealthObserver
             playerHealth.RemoveObserver(this);
         }
     }
+
+
 }

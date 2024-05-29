@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerStateController : MonoBehaviour
 {
     private IPlayerState currentState;
 

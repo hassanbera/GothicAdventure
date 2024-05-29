@@ -3,12 +3,20 @@ public class Player : MonoBehaviour, IPlayer
 {
     private PlayerHealth playerHealth;
     private int attackDamage = 40;
+    
+    public int Attack
+    {
+        get { return attackDamage; }
+        set { attackDamage = value; }
+    }
+
+    public int Speed { get; set; }
     void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
     }
 
-    public int Health
+    public float Health
     {
         get { return playerHealth.Health; }
         set { playerHealth.Health = value; }
@@ -18,4 +26,5 @@ public class Player : MonoBehaviour, IPlayer
     {
         // Basic behavior without any boosts
     }
+
 }

@@ -1,32 +1,22 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
 
 public class HealthBoost : PlayerDecorator
 {
-    private int bonusHealth;
-    private float duration;
+    private float bonusHealth;
 
-    public HealthBoost(IPlayer player, int healthBonus, float duration) : base(player)
+
+    public HealthBoost(IPlayer player, float healthBonus) : base(player)
     {
         bonusHealth = healthBonus;
-        this.duration = duration;
+     
     }
 
     public override void ApplyBoost()
     {
         base.ApplyBoost();
         Health += bonusHealth;
-        StartCoroutine(TemporaryBoost());
-    }
-
-    public override void RemoveBoost()
-    {
-        Health -= bonusHealth;
-    }
-
-    private IEnumerator TemporaryBoost()
-    {
-        yield return new WaitForSeconds(duration);
-        RemoveBoost();
-        Destroy(this); // Remove the decorator component after the boost duration
     }
 }
