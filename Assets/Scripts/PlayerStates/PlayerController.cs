@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IPlayer
 {
-    public float speed = 5.0f;
-    public float jumpForce = 5.0f;
+
+
     public bool isGrounded = false;
     public Transform playerLegs;
     public float groundCheckRadius = 0.2f;
