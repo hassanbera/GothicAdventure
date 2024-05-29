@@ -5,7 +5,6 @@ public class RunningState : IPlayerState
     public void EnterState(PlayerController player)
     {
         // Initialize idle animation
-        player.SetAnimation("Run");
         player.rb.velocity = new Vector2(player.speed * Input.GetAxis("Horizontal"), player.rb.velocity.y);
     }
 
@@ -27,6 +26,23 @@ public class RunningState : IPlayerState
                 player.spriteRenderer.flipX = true;
             }
             
+        }
+
+        else if (Input.GetAxis("Horizontal") == 0)
+        {
+            player.TransitionToState(new IdleState());
+        }
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Attacking");
+            player.TransitionToState(new AttackingState());
+        }
+
+        if(Input.GetButtonDown("Fire2"))
+        {
+            Debug.Log("Attacking2");
+            player.TransitionToState(new AttackingState2());
         }
     }
 

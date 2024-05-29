@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         currentState.UpdateState(this);
         isGrounded = Physics2D.OverlapCircle(playerLegs.position, groundCheckRadius, groundLayer);
+
+        animator.SetBool("isGrounded", !isGrounded);
+        animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
     }
 
     public void TransitionToState(IPlayerState newState)
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         else if(animationName == "Jump")
         {
-            animator.SetBool("isGrounded", !isGrounded);
+            animator.SetBool("isGrounded", true);
         }
 
         else if(animationName == "notJumping")
