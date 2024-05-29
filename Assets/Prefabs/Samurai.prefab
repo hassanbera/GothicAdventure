@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8638074307322251847}
   - component: {fileID: 8638074307322251842}
   - component: {fileID: 8638074307322251843}
-  - component: {fileID: 8638074307322251844}
   - component: {fileID: 8638074307322251845}
+  - component: {fileID: 1715943032}
   m_Layer: 0
   m_Name: Samurai
   m_TagString: Untagged
@@ -135,26 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8638074307322251844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8638074307322251864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67717fcd96cdabf438e457308fcce8b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 1
-  detectionRange: 10
-  attackRange: 3
-  distanceToPlayer: 0
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
-  isAttacking: 0
 --- !u!95 &8638074307322251845
 Animator:
   serializedVersion: 5
@@ -176,3 +156,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1715943032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638074307322251864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9e9ed7a7953c740977a29902a0d571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
