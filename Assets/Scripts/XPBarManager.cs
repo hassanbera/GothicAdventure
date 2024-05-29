@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class XPBarManager : MonoBehaviour
+public class XPBarManager : MonoBehaviour,INotificationObserver
 {
     public float xp = 0;
     public float maxXp = 100;
@@ -14,6 +14,8 @@ public class XPBarManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        NotificationManager.Instance.AddObserver(this, NotificationType.XP);
         xpText.text = "XP lvl" + currentLevel;
 
         updateXPBar(0);

@@ -461,6 +461,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &986015819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1310555752907176868, guid: 512dd6a08eab91a4d80d5c8da3dd52d3, type: 3}
+  m_PrefabInstance: {fileID: 383832944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &986015823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986015819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525dfef9b36af4a29835481047f07844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackBonus: 12
 --- !u!1 &1124426904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,8 +3446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf23c0ca5bc1c14a80cec73e340b8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 10
   isGrounded: 0
   playerLegs: {fileID: 692380428}
   groundCheckRadius: 0.2
