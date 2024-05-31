@@ -91,7 +91,7 @@ public class SamuraiEnemy : MonoBehaviour, IEnemy
         Debug.Log("Knight Enemy died!");
         Destroy(gameObject);
 
-        FindObjectOfType<PlayerExperience>().ChangeExperience(40);
+        FindObjectOfType<PlayerExperience>().ChangeExperience(80);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

@@ -91,7 +91,7 @@ public class KnightEnemy : MonoBehaviour, IEnemy
         Debug.Log("Knight Enemy died!");
         Destroy(gameObject);
         // Add XP to player
-        FindObjectOfType<PlayerController>().addXP(30);
+        FindObjectOfType<PlayerController>().addXP(60);
     }
 
     // if a collision is detected

@@ -92,7 +92,7 @@ public class KingEnemy : MonoBehaviour, IEnemy
         Destroy(gameObject);
 
         // Add XP to player
-        FindObjectOfType<PlayerExperience>().ChangeExperience(10);
+        FindObjectOfType<PlayerExperience>().ChangeExperience(90);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
