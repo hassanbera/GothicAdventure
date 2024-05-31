@@ -6,7 +6,7 @@ public class KingEnemy : MonoBehaviour, IEnemy
 {
     // Properties
     public float Speed { get; set; } = 1;
-    public float Health { get; set; } = 50;
+    public float Health { get; set; } = 100;
     public float Damage { get; set; } = 30;
 
     public GameObject Player { get; set; }

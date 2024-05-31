@@ -79,6 +79,11 @@ public class SamuraiEnemy : MonoBehaviour, IEnemy
     {
         Health -= damage;
         Debug.Log("Knight Enemy took damage! Health: " + Health);
+
+        if (Health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()

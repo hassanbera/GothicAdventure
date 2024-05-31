@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Coconut : MonoBehaviour
 {
-    public int attackBonus = 12; // Amount of attack bonus to add
+    public int attackBonus = 2; // Amount of attack bonus to add
 
     void OnTriggerEnter2D(Collider2D other)
     {
