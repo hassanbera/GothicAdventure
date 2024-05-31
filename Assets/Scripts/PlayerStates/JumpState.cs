@@ -17,6 +17,12 @@ public class JumpState : IPlayerState
         {
             player.TransitionToState(new IdleState());
         }
+
+        // if he moves 
+        if(Input.GetAxis("Horizontal") != 0)
+        {
+            player.TransitionToState(new RunningState());
+        }
     }
 
     public void ExitState(PlayerController player)

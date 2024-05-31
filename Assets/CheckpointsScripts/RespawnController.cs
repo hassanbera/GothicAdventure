@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class RespawnController : MonoBehaviour
 {
-    public Transform respawnPoint; // Assign this in the Inspector
+    public Vector3 respawnPoint;
+
+    void Start()
+    {
+        // set it to the current position
+        respawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Respawn the player at the respawn point
-            collision.transform.position = respawnPoint.position;
-            // Add any additional logic like resetting health, etc.
+            collision.GetComponent<PlayerController>().lastCheckpoint = respawnPoint;
         }
     }
 }

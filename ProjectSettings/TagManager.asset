@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Apple
   - Coin
+  - FallDetector
+  - Knight
+  - King
+  - Samurai
   layers:
   - Default
   - TransparentFX

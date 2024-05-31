@@ -14,6 +14,9 @@ public class SpeedBoost : PlayerDecorator
     public override void ApplyBoost()
     {
         base.ApplyBoost();
-        Speed += bonusSpeed; // Increase health by the bonus amount
+        Speed += bonusSpeed; // Increase speed by the bonus amount
+
+        Debug.Log("Speed boosted by " + bonusSpeed);    
+
     }
 }

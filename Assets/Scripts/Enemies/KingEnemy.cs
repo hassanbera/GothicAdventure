@@ -6,7 +6,7 @@ public class KingEnemy : MonoBehaviour, IEnemy
 {
     // Properties
     public float Speed { get; set; } = 1;
-    public float Health { get; set; } = 100;
+    public float Health { get; set; } = 50;
     public float Damage { get; set; } = 30;
 
     public GameObject Player { get; set; }
@@ -79,11 +79,31 @@ public class KingEnemy : MonoBehaviour, IEnemy
     {
         Health -= damage;
         Debug.Log("Knight Enemy took damage! Health: " + Health);
+
+        if (Health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
     {
         Debug.Log("Knight Enemy died!");
+        Destroy(gameObject);
+
+        // Add XP to player
+        FindObjectOfType<PlayerExperience>().ChangeExperience(10);
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "FallDetector")
+        {
+            Debug.Log("King Enemy fell!");
+            Die();
+        }
+    }
+    
+    
 }
 

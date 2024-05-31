@@ -21,9 +21,6 @@ public class LevelTransition : MonoBehaviour
             else
             {
                 Debug.Log("This is the last scene in the build order.");
-                // Optionally, reload the current scene or go to a specific end scene
-                // SceneManager.LoadScene(currentSceneIndex); // to reload
-                // SceneManager.LoadScene("EndScene"); // to load a specific end scene
             }
         }
     }

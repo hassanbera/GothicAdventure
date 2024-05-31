@@ -12,9 +12,8 @@ public class AttackBoost : PlayerDecorator
     public override void ApplyBoost()
     {
         base.ApplyBoost();
-        JumpForce += bonusAttack;
-
-        Debug.Log("jump boosted to " + JumpForce);
+        Attack += bonusAttack; // Increase health by the bonus amount
+        Debug.Log("Attack boosted by " + bonusAttack);
     }
 
 }

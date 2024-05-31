@@ -28,6 +28,7 @@ public class IdleState : IPlayerState
         {
             player.TransitionToState(new AttackingState2());
         }
+        
 
     }
 

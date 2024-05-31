@@ -11,7 +11,7 @@ public class KnightEnemy : MonoBehaviour, IEnemy
 
     public GameObject Player { get; set; }
     public float DetectionRange { get; set; } = 10;
-    public float AttackRange { get; set; } = 3;
+    public float AttackRange { get; set; } = 2;
     public float DistanceToPlayer { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public Animator Animator { get; set; }
@@ -79,11 +79,30 @@ public class KnightEnemy : MonoBehaviour, IEnemy
     {
         Health -= damage;
         Debug.Log("Knight Enemy took damage! Health: " + Health);
+
+        if (Health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
     {
         Debug.Log("Knight Enemy died!");
+        Destroy(gameObject);
+        // Add XP to player
+        FindObjectOfType<PlayerController>().addXP(30);
+    }
+
+    // if a collision is detected
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if he falls
+        if (collision.gameObject.tag == "FallDetector")
+        {
+            Debug.Log("Knight Enemy fell");
+            Die();
+        }
     }
 }
 

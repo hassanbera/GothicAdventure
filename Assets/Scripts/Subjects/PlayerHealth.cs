@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour, IHealthSubject
         else if (health < 0)
         {
             health = 0;
+            Die();
         }
 
         Health = health;
@@ -49,5 +50,15 @@ public class PlayerHealth : MonoBehaviour, IHealthSubject
         {
             observer.OnHealthChanged(health);
         }
+    }
+
+    public void Die()
+    {
+        // respawn player and reset health
+        health = maxHealth;
+        NotifyObservers();
+
+        // respawn player
+        GameManager.instance.RespawnPlayer(GetComponent<PlayerController>());
     }
 }

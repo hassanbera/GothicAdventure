@@ -10,7 +10,7 @@ public class RunningState : IPlayerState
 
     public void UpdateState(PlayerController player)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && player.isGrounded)
         {
             player.TransitionToState(new JumpState());
         }

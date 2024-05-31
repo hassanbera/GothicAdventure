@@ -84,6 +84,17 @@ public class SamuraiEnemy : MonoBehaviour, IEnemy
     public void Die()
     {
         Debug.Log("Knight Enemy died!");
+        Destroy(gameObject);
+
+        FindObjectOfType<PlayerExperience>().ChangeExperience(40);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "FallDetector")
+        {
+            Die();
+        }
     }
 }
 
